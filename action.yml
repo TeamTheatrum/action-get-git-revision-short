@@ -1,0 +1,12 @@
+name: Get Git Revision Short
+description: Get short git revision
+outputs:
+  revision:
+    value: ${{ steps.get-revision.outputs.revision }}
+runs:
+  using: composite
+  steps:
+    - id: get-revision
+      shell: bash
+      run: echo "::set-output name=revision::$(git rev-parse --short=10 HEAD)"
+
